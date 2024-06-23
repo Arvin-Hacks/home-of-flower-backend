@@ -1,6 +1,6 @@
 import Order from "../models/order.models.js";
 import Cart from "../models/cart.models.js";
-import { sendAdminNotification } from "../services/sendSMS.js";
+// import { sendAdminNotification } from "../services/sendSMS.js";
 // import Order from '../models/order.models';
 // sendAdminNotification
 export const placeOrder = async (req, res) => {
@@ -24,7 +24,7 @@ export const placeOrder = async (req, res) => {
     await newOrder.save();
 
     // Send notification to admin
-    sendAdminNotification(newOrder);
+    // sendAdminNotification(newOrder);
     if (newOrder) {
       const removeCart = await Cart.updateOne(
         { user },
