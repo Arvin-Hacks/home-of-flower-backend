@@ -155,8 +155,8 @@ export const deleteProductApi = async (req, res) => {
 export const updateProductApi = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
-  console.log('da id',id)
-  console.log('da',data)
+  // console.log('da id',id)
+  // console.log('da',data)
 
   try {
     const product = await Product.findByIdAndUpdate(id, data, { new: true });
