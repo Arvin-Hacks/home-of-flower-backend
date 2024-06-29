@@ -128,3 +128,46 @@ export const getAllProduct = async (req, res) => {
     return res.status(500).json({ message: "Prodoct Details Failed", error });
   }
 };
+
+export const deleteProductApi = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const product = await Product.findByIdAndDelete(id);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    // if (!product.isDeletable()) {
+    //   return res.status(403).json({ error: "Product cannot be deleted" });
+    // }
+
+    // await product.remove();
+
+    res.json({ message: "Product deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
+
+export const updateProductApi = async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+  console.log('da id',id)
+  console.log('da',data)
+
+  try {
+    const product = await Product.findByIdAndUpdate(id, data, { new: true });
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json({ message: "Product updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};

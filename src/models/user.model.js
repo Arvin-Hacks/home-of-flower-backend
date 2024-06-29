@@ -19,11 +19,12 @@ const userSchema = new Schema(
             lowecase: true,
             trim: true, 
         },
-        fullName: {
+        firstName: {
             type: String,
-            // required: true,
-            trim: true, 
-            index: true
+            
+        },
+        lastName: {
+            type: String,            
         },
         // avatar: {
         //     type: String, // cloudinary url
